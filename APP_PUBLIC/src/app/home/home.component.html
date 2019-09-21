@@ -1,0 +1,21 @@
+<div class="container martop">
+    <div class="row">
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img src="/userImages/{{user.profilePic}}" class="rounded-circle profilePic">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{user.fName}} {{user.lName}}</h5>
+                    <p class="card-text text-center">{{user.gender}}</p>
+                    <hr>
+                    <p><i class="fa fa-home"></i> Lives in {{user.address.city}},{{user.address.state}}</p>
+                    <p class="card-text"><strong>Followers</strong> {{user.followers.length}}</p>
+                    <p class="card-text"><strong>Following</strong> {{user.following.length}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <app-post-upload [user]=user></app-post-upload>
+            <app-posts-list [user]=user></app-posts-list>
+        </div>
+    </div>
+</div>

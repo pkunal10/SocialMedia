@@ -1,0 +1,70 @@
+.martop
+{
+    margin-top: 90px;
+}
+.profilePic
+{
+    height: 120px;
+    width: 120px;
+    margin: auto;    
+}
+.postImage
+{
+    width: 100%;
+}
+.postVideo
+{
+    width: 100%;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+.h7 {
+    font-size: 0.8rem;
+}
+
+.gedf-wrapper {
+    margin-top: 0.97rem;
+}
+
+@media (min-width: 992px) {
+    .gedf-main {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    .gedf-card {
+        margin-bottom: 2.77rem;
+    }
+}
+
+/**Reset Bootstrap*/
+.dropdown-toggle::after {
+    content: none;
+    display: none;
+}
+
+.search-drop-down {
+    position: absolute;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 10; 
+    background-color: #fff;
+    font-family: sans-serif;
+    opacity: 0.98;    
+    box-shadow: 1px 5px 5px #888888;
+}
+.search-drop-down div{
+    padding: 5px;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+}
+.search-drop-down div:hover{
+    background-color: #fafafa;
+}
+.searchBox
+{
+    position: relative;
+}
