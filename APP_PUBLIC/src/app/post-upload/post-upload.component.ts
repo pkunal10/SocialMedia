@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild, NgModule } from '@angular/core';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { UserPostService } from '../user-post.service';
 import { PostsListComponent } from '../posts-list/posts-list.component';
@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
   selector: 'app-post-upload',
   templateUrl: './post-upload.component.html',
   styleUrls: ['./post-upload.component.css'],
-  providers: [UserPostService, UserService, PostsListComponent]
+  providers: [ UserService, PostsListComponent]
+})
+@NgModule({
+  providers:[UserPostService]
 })
 export class PostUploadComponent implements OnInit {
 
@@ -51,11 +54,15 @@ export class PostUploadComponent implements OnInit {
       alert(data.msg);
     }
     else {
+      this.userPostServive.setRefreshNeed(true);
       alert("posted");
       this.captionInput.value = "";
       // debugger
       // this.router.navigate(['home']);
-      this.postListComponent.displayUserPosts();
+      // this.router.navigate(['home']);
+      // this.router.navigateByUrl('userProfile', { skipLocationChange: true });
+      // this.router.navigate(['home']);
+      // this.postListComponent.displayUserPosts();
     }
   }
 
@@ -86,6 +93,7 @@ export class PostUploadComponent implements OnInit {
       alert(data.msg);
     }
     else {
+      this.userPostServive.setRefreshNeed(true);
       alert("posted");
       this.captionInputWithMedia.value = "";
       this.mediaInput.value = "";

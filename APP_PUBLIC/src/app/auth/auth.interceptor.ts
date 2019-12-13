@@ -8,12 +8,14 @@ import { UserService } from "../user.service";
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private userService : UserService,private router : Router){}
+    constructor(private userService: UserService, private router: Router) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
 
-        if (req.headers.get('noauth'))
+        if (req.headers.get('NoAuth')) {
+            console.log(req);
             return next.handle(req.clone());
+        }
         else {
             const clonedreq = req.clone({
                 headers: req.headers.set("Authorization", "Bearer " + this.userService.getToken())

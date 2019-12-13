@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { User } from './user';
 
 @Injectable()
 export class UserService {
 
+  user: User;
   noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
 
   constructor(private http: HttpClient) { }
@@ -15,23 +17,19 @@ export class UserService {
   private URLEMAILEXIST = 'http://localhost:3000/api/isEmailExist/';
   private LOGIN = 'http://localhost:3000/api/login';
   private URL_GETUSERNAMES = 'http://localhost:3000/api/getUserNames';
+  private URL_GET_SEARCH_LIST = 'http://localhost:3000/api/getSearchList';
+  private URL_FOLLOW_BTN_CLICK = 'http://localhost:3000/api/followBtnClicked';
 
 
   createUser(formdata: FormData) {
-
-    // this.http.post(this.URLUSER, formdata)
-    //   .subscribe(data => { // use HttpClient for this functionality
-    //     res = data;
-    //     console.log(res.msg);
-    //   });
-
-
     return this.http.post(this.URLUSER, formdata, this.noAuthHeader);
   }
 
   getUserById() {
-    console.log(this.getUserPayload() + "Payload");
     return this.http.get(this.URLUSER + "/" + this.getUserPayload().userId);
+  }
+  getUserByIdParam(userId:string) {
+    return this.http.get(this.URLUSER + "/" + userId);
   }
 
   // isEmailExist(email: string) {    
@@ -76,4 +74,17 @@ export class UserService {
     return this.http.get(this.URL_GETUSERNAMES);
   }
 
+  getSearchList(data) {
+    return this.http.post(this.URL_GET_SEARCH_LIST, data);
+  }
+
+  followBtnClick(data) {
+    return this.http.post(this.URL_FOLLOW_BTN_CLICK, data);
+  }
+  setUser(selectedUser: User) {
+    this.user = selectedUser;
+  }
+  getUser() {
+    return this.user;
+  }
 }

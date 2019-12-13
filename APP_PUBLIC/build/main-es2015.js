@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar fixed-top navbar-expand-lg navbar-light bg-light\">\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo03\"\n    aria-controls=\"navbarTogglerDemo03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <a class=\"navbar-brand\" routerLink=\"home\">Social Media</a>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarTogglerDemo03\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" routerLink=\"home\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\"><i class=\"far fa-user\"></i></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"signup\"><i class=\"fas fa-user-plus\"></i></a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\" *ngIf=\"isLoggedIn\" class=\"searchBox\">\n      <input class=\"form-control mr-sm-5\" [(ngModel)]=\"search.item\" (keyup)=\"keyPressSearch()\" [ngModelOptions]=\"{standalone:true}\" id='search'\n        type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <!-- <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button> -->\n      <div class='search-drop-down' *ngIf=\"isShowAutoComplete\">\n        <div *ngFor=\"let s of userNames | searchFilter: getSearchValue()\">\n          <span (click)=\"searchDropdownClick(s)\">{{s}}</span>\n        </div>\n      </div>\n    </form>\n    \n  </div>\n  \n</nav>\n<router-outlet></router-outlet>");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar fixed-top navbar-expand-lg navbar-light bg-light\">\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo03\"\n    aria-controls=\"navbarTogglerDemo03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <a class=\"navbar-brand\" routerLink=\"home\">Social Media</a>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarTogglerDemo03\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-lg-0\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" routerLink=\"/home\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/userProfile\" *ngIf=\"userService.isLogedin()\"><i class=\"far fa-user\"></i></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/signup\" *ngIf=\"!userService.isLogedin()\"><i class=\"fas fa-user-plus\"></i></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"logOut()\" title=\"Log out\" *ngIf=\"userService.isLogedin()\"><i class=\"fa fa-sign-out\"></i></a>\n      </li>\n    </ul>\n    <div><img class=\"rounded-circle\" width=\"45\" src=\"/userImages/{{user.profilePic}}\" alt=\"\">  {{user.fName}} </div>&nbsp;&nbsp;&nbsp;&nbsp;\n    <form class=\"form-inline my-2 my-lg-0\" *ngIf=\"userService.isLogedin()\" class=\"searchBox\">      \n      <input class=\"form-control mr-sm-5\" [(ngModel)]=\"search.item\" (keyup)=\"keyPressSearch()\" [ngModelOptions]=\"{standalone:true}\" id='search'\n        type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <!-- <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button> -->\n      <div class='search-drop-down' *ngIf=\"isShowAutoComplete\">\n        <div *ngFor=\"let s of userNames | searchFilter: getSearchValue()\">\n          <span (click)=\"searchDropdownClick(s)\">{{s}}</span>\n        </div>\n      </div>\n    </form>\n    \n  </div>\n  \n</nav>\n<router-outlet></router-outlet>");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container martop\">\n    <div class=\"row\">\n        <div class=\"col-4\">\n            <div class=\"card\" style=\"width: 18rem;\">\n                <img src=\"/userImages/{{user.profilePic}}\" class=\"rounded-circle profilePic\">\n                <div class=\"card-body\">\n                    <h5 class=\"card-title text-center\">{{user.fName}} {{user.lName}}</h5>\n                    <p class=\"card-text text-center\">{{user.gender}}</p>\n                    <hr>\n                    <p><i class=\"fa fa-home\"></i> Lives in {{user.address.city}},{{user.address.state}}</p>\n                    <p class=\"card-text\"><strong>Followers</strong> {{user.followers.length}}</p>\n                    <p class=\"card-text\"><strong>Following</strong> {{user.following.length}}</p>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-8\">\n            <app-post-upload [user]=user></app-post-upload>\n            <app-posts-list [user]=user></app-posts-list>\n        </div>\n    </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container martop\">\n    <div class=\"row\">\n        <div class=\"col-4\">\n            <div class=\"card\" style=\"width: 18rem;\">\n                <img src=\"/userImages/{{user.profilePic}}\" class=\"rounded-circle profilePic\">\n                <div class=\"card-body\">\n                    <h5 class=\"card-title text-center\">{{user.fName}} {{user.lName}}</h5>\n                    <p class=\"card-text text-center\">{{user.gender}}</p>\n                    <hr>\n                    <p><i class=\"fa fa-home\"></i> Lives in {{user.address.city}},{{user.address.state}}</p>\n                    <p class=\"card-text\"><strong>Followers</strong> {{user.followers.length}}</p>\n                    <p class=\"card-text\"><strong>Following</strong> {{user.following.length}}</p>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-8\">\n            <app-post-upload [user]=\"user\"></app-post-upload>\n            <app-posts-list [userId]=\"user._id\"></app-posts-list>\n        </div>\n    </div>\n</div>");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"card gedf-card\" *ngFor=\"let userPost of postsList\">\n    <div class=\"card-header\">\n        <div class=\"d-flex justify-content-between align-items-center\">\n            <div class=\"d-flex justify-content-between align-items-center\">\n                <div class=\"mr-2\">\n                    <img class=\"rounded-circle\" width=\"45\" src=\"/userImages/{{user.profilePic}}\" alt=\"\">\n                </div>\n                <div class=\"ml-2\">\n                    <div class=\"h5 m-0\">@{{user.fName}} {{user.lName}}</div>\n                    <!-- <div class=\"h7 text-muted\">Miracles Lee Cross</div> -->\n                </div>\n            </div>\n            <div>\n                <div class=\"dropdown\">\n                    <button class=\"btn btn-link dropdown-toggle\" type=\"button\" id=\"gedf-drop1\" data-toggle=\"dropdown\"\n                        aria-haspopup=\"true\" aria-expanded=\"false\">\n                        <i class=\"fa fa-ellipsis-h\"></i>\n                    </button>\n                    <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"gedf-drop1\">\n                        <div class=\"h6 dropdown-header\">Configuration</div>\n                        <a class=\"dropdown-item\" href=\"#\">Save</a>\n                        <a class=\"dropdown-item\" href=\"#\">Hide</a>\n                        <a class=\"dropdown-item\" href=\"#\">Report</a>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n    </div>\n    <div class=\"card-body\">\n        <div class=\"text-muted h7 mb-2\"> <i class=\"fa fa-clock-o\"></i>10 min ago</div>\n        <!-- <a class=\"card-link\" href=\"#\">\n            <h5 class=\"card-title\">Lorem ipsum dolor sit amet, consectetur adip.</h5>\n        </a> -->\n\n        <p class=\"card-text\">\n            {{userPost.caption}}\n        </p>\n        <div *ngIf=\"userPost.media!=''&&userPost.mediaType=='Image'\"><img class=\"postImage\" src=\"/userPosts/{{userPost.media}}\"></div>\n        <div *ngIf=\"userPost.media!=''&&userPost.mediaType=='Video'\">\n            <video height=\"280\" controls class=\"postVideo\">\n                <source src=\"/userPosts/{{userPost.media}}\" type=\"video/mp4\">                \n                Your browser does not support the video tag.\n            </video>\n\n        </div>\n    </div>\n    <div class=\"card-footer\">\n        <a href=\"#\" class=\"card-link\"><i class=\"fa fa-gittip\"></i> Like</a>\n        <a href=\"#\" class=\"card-link\"><i class=\"fa fa-comment\"></i> Comment</a>\n        <a href=\"#\" class=\"card-link\"><i class=\"fa fa-mail-forward\"></i> Share</a>\n    </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"card gedf-card\" *ngFor=\"let userPost of postsList\">\n    <div class=\"card-header\">\n        <div class=\"d-flex justify-content-between align-items-center\">\n            <div class=\"d-flex justify-content-between align-items-center\">\n                <div class=\"mr-2\">\n                    <img class=\"rounded-circle\" width=\"45\" src=\"/userImages/{{userPost.user.profilePic}}\" alt=\"\">\n                </div>\n                <div class=\"ml-2\">\n                    <div class=\"h5 m-0\">{{userPost.user.fName}} {{userPost.user.lName}}</div>\n                    <!-- <div class=\"h7 text-muted\">Miracles Lee Cross</div> -->\n                </div>\n            </div>\n            <div>\n                <div class=\"dropdown\">\n                    <button class=\"btn btn-link dropdown-toggle\" type=\"button\" id=\"gedf-drop1\" data-toggle=\"dropdown\"\n                        aria-haspopup=\"true\" aria-expanded=\"false\">\n                        <i class=\"fa fa-ellipsis-h\"></i>\n                    </button>\n                    <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"gedf-drop1\">\n                        <div class=\"h6 dropdown-header\">Configuration</div>\n                        <a class=\"dropdown-item\" href=\"#\">Save</a>\n                        <a class=\"dropdown-item\" href=\"#\">Hide</a>\n                        <a class=\"dropdown-item\" href=\"#\">Report</a>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n    </div>\n    <div class=\"card-body\">\n        <div class=\"text-muted h7 mb-2\"> <i class=\"fa fa-clock-o\"></i>  {{userPost.datePosted | date:'medium'}}</div>\n        <!-- <a class=\"card-link\" href=\"#\">\n            <h5 class=\"card-title\">Lorem ipsum dolor sit amet, consectetur adip.</h5>\n        </a> -->\n\n        <p class=\"card-text\">\n            {{userPost.caption}}\n        </p>\n        <div *ngIf=\"userPost.media!=''&&userPost.mediaType=='Image'\"><img class=\"postImage\" src=\"/userPosts/{{userPost.media}}\"></div>\n        <div *ngIf=\"userPost.media!=''&&userPost.mediaType=='Video'\">\n            <video height=\"280\" controls class=\"postVideo\">\n                <source src=\"/userPosts/{{userPost.media}}\" type=\"video/mp4\">                \n                Your browser does not support the video tag.\n            </video>\n\n        </div>\n    </div>\n    <div class=\"card-footer\">\n        <a (click)=\"likeUnlikeClicked(userPost)\" class=\"card-link\"><i [ngClass]=\"userPost.class\"></i> {{userPost.likes.length}}</a>\n        <a href=\"#\" class=\"card-link\"><i class=\"fa fa-comment\"></i> Comment</a>\n        <a href=\"#\" class=\"card-link\"><i class=\"fa fa-mail-forward\"></i> Share</a>\n    </div>\n</div>");
 
 /***/ }),
 
@@ -84,7 +84,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"martop\">{{searchTerm}}</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"martop row\">\n    <div class=\"col-4\"></div>\n    <div class=\"col-4\">\n        <div class=\"card gedf-card\" *ngFor=\"let user of searchList\">\n            <div class=\"card-header\" (click)=\"userClicked(user)\">\n                <div class=\"d-flex justify-content-between align-items-center\">\n                    <div class=\"d-flex justify-content-between align-items-center\">\n                        <div class=\"mr-2\">\n                            <img class=\"rounded-circle\" width=\"45\" src=\"/userImages/{{user.profilePic}}\" alt=\"\">\n                        </div>\n                        <div class=\"ml-2\">\n                            <div class=\"h5 m-0\">{{user.fName}} {{user.lName}}</div>\n                            <!-- <div class=\"h7 text-muted\">Miracles Lee Cross</div> -->\n                            <p><i class=\"fa fa-home\"></i> Lives in {{user.address.city}},{{user.address.state}}</p>\n                        </div>\n                    </div>\n                    <div>\n                        <div class=\"dropdown\">\n                            <div class=\"followingClassForSearch\"\n                                *ngIf=\"user._id!=loggedInUserId&&user.btnType=='none'\">Following</div>                            \n                            <button (click)=\"followBtnClick(user._id)\" *ngIf=\"user._id!=loggedInUserId&&user.btnType!='none'\" class=\"btn btn-primary\"\n                                type=\"button\">\n                                <span *ngIf=\"user.btnType=='follow back'\">Follow back</span>\n                                <span *ngIf=\"user.btnType=='follow'\">Follow</span>\n                            </button>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n        </div>\n        <div class=\"col-4\"></div>\n\n    </div>\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-profile/user-profile.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/user-profile/user-profile.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container martop\">\n    <div class=\"row\">\n        <div class=\"col-4\">\n            <div class=\"card\" style=\"width: 18rem;\">\n                <img src=\"/userImages/{{user.profilePic}}\" class=\"rounded-circle profilePic\">\n                <div class=\"card-body\">\n                    <h5 class=\"card-title text-center\">{{user.fName}} {{user.lName}}</h5>\n                    <p class=\"card-text text-center\">{{user.gender}}</p>\n                    <hr>\n                    <p><i class=\"fa fa-home\"></i> Lives in {{user.address.city}},{{user.address.state}}</p>\n                    <p class=\"card-text\"><strong>Followers</strong> {{user.followers.length}}</p>\n                    <p class=\"card-text\"><strong>Following</strong> {{user.following.length}}</p>\n\n                    <div class=\"followingClass\"\n                        *ngIf=\"user._id!=loggedInUserId&&user.btnType=='none'\">Following</div>\n                    <button (click)=\"followBtnClick('user._id')\" *ngIf=\"user._id!=loggedInUserId&&user.btnType!='none'\" class=\"btn btnFollow btn-primary\"\n                        type=\"button\">\n                        <span *ngIf=\"user.btnType=='follow back'\">Follow back</span>\n                        <span *ngIf=\"user.btnType=='follow'\">Follow</span>\n                    </button>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-8\">\n            <app-posts-list [userId]=\"user._id\" [source]=\"'userProfile'\"></app-posts-list>\n        </div>\n    </div>\n</div>");
 
 /***/ }),
 
@@ -97,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container martop\">\n    <div class=\"row\">\n        <div class=\"col-lg-5\">\n            <h2>Login</h2>\n\n            <form (ngSubmit)=\"loginform.valid&&login(model)\" #loginform=\"ngForm\">\n                <div class=\"form-group\">\n                    <label for=\"emailId\">Email address</label>\n                    <input type=\"email\" class=\"form-control\" #emailId=\"ngModel\" [pattern]=\"emailRegex\" required\n                        id=\"emailId\" [(ngModel)]=\"model.emailId\" name=\"emailId\" aria-describedby=\"emailHelp\"\n                        placeholder=\"Enter email\">\n                    <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone\n                        else.</small>\n                    <div class=\"text-danger\" *ngIf=\"loginform.submitted&&emailId.erroes?.pattern\">\n                        Invalid Email Address.\n                    </div>\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"password\">Password</label>\n                    <input type=\"password\" minlength=\"5\" #password=\"ngModel\" [(ngModel)]=\"model.password\"\n                        name=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Password\">\n                </div>\n                <div class=\"text-danger\" *ngIf=\"loginform.submitted&&password.erroes?.minlength\">\n                    Password should be of atleast 5 character.\n                </div>\n                <!-- <div class=\"form-group form-check\">\n                    <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">\n                    <label class=\"form-check-label\" for=\"exampleCheck1\">Check me out</label>\n                </div> -->\n                <button type=\"submit\" class=\"btn btn-primary\">Log in</button>\n            </form>\n\n        </div>\n        <div class=\"col-lg-7\">\n            <h2>Register</h2>\n\n            <form>\n                <div class=\"form-row\">\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"fName\">First Name</label>\n                        <input type=\"text\" class=\"form-control\" id=\"fName\" placeholder=\"First Name\" name=\"fName\">\n                    </div>\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"lName\">Last Name</label>\n                        <input type=\"text\" class=\"form-control\" id=\"lName\" placeholder=\"Last Name\" name=\"lName\">\n                    </div>\n                </div>\n                <div class=\"form-row\">\n                    <div class=\"form-group col-md-4\">\n                        <label for=\"emailId\">Email Id</label>\n                        <input type=\"email\" class=\"form-control\" id=\"emailId\" placeholder=\"Email Id\" name=\"emailId\">\n                    </div>\n                    <div class=\"form-group col-md-4\">\n                        <label for=\"mobile\">Mobile</label>\n                        <input type=\"number\" class=\"form-control\" id=\"mobile\" placeholder=\"Mobile\" name=\"mobile\">\n                    </div>\n                    <div class=\"form-group col-md-4\">\n                        <label for=\"gender\">Gender</label>\n                        <div class=\"form-check form-check-inline\">\n                            <input class=\"form-check-input\" (change)=\"radioCheck('Male')\" type=\"radio\" checked\n                                name=\"gender\" id=\"gender\" value=\"Male\">\n                            <label class=\"form-check-label\" for=\"male\">Male</label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" (change)=\"radioCheck('Female')\"\n                                id=\"gender\" value=\"Female\">\n                            <label class=\"form-check-label\" for=\"Female\">Female</label>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"line1\">Address</label>\n                    <input type=\"text\" class=\"form-control\" id=\"line1\" placeholder=\"Line 1\" name=\"line1\">\n                </div>\n                <div class=\"form-row\">\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"city\">City</label>\n                        <input type=\"text\" class=\"form-control\" id=\"city\" name=\"city\">\n                    </div>\n                    <div class=\"form-group col-md-4\">\n                        <label for=\"state\">State</label>\n                        <input type=\"text\" class=\"form-control\" id=\"state\" name=\"state\">\n                    </div>\n                    <div class=\"form-group col-md-2\">\n                        <label for=\"country\">Country</label>\n                        <input type=\"text\" class=\"form-control\" id=\"country\" name=\"country\">\n                    </div>\n                </div>\n                <div class=\"form-row\">\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"password\">Password</label>\n                        <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Password\"\n                            name=\"password\">\n                    </div>\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"profilePic\">Select Image</label>\n                        <input type=\"file\" class=\"form-control\" id=\"profilePic\" name=\"profilePic\">\n                    </div>\n                </div>\n                <button type=\"button\" (click)=\"register()\" class=\"btn btn-primary\">Sign Up</button>\n            </form>\n\n        </div>\n\n    </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container martop\">\n    <div class=\"row\">\n        <div class=\"col-lg-5\">\n            <h2>Login</h2>\n\n            <form (ngSubmit)=\"loginform.valid&&login(model)\" #loginform=\"ngForm\">\n                <div class=\"form-group\">\n                    <label for=\"emailId\">Email address</label>\n                    <input type=\"email\" class=\"form-control\" #emailId=\"ngModel\" [pattern]=\"emailRegex\" required\n                        id=\"emailId\" [(ngModel)]=\"model.emailId\" name=\"emailId\" aria-describedby=\"emailHelp\"\n                        placeholder=\"Enter email\">\n                    <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone\n                        else.</small>\n                    <div class=\"text-danger\" *ngIf=\"loginform.submitted&&emailId.erroes?.pattern\">\n                        Invalid Email Address.\n                    </div>\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"password\">Password</label>\n                    <input type=\"password\" minlength=\"5\" #password=\"ngModel\" [(ngModel)]=\"model.password\"\n                        name=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Password\">\n                </div>\n                <div class=\"text-danger\" *ngIf=\"loginform.submitted&&password.erroes?.minlength\">\n                    Password should be of atleast 5 character.\n                </div>\n                <!-- <div class=\"form-group form-check\">\n                    <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">\n                    <label class=\"form-check-label\" for=\"exampleCheck1\">Check me out</label>\n                </div> -->\n                <button type=\"submit\" class=\"btn btn-primary\">Log in</button>\n            </form>\n\n        </div>\n        <div class=\"col-lg-7\">\n            <h2>Register</h2>\n\n            <form>\n                <div class=\"form-row\">\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"fName\">First Name</label>\n                        <input type=\"text\" class=\"form-control\" id=\"fName\" placeholder=\"First Name\" name=\"fName\">\n                    </div>\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"lName\">Last Name</label>\n                        <input type=\"text\" class=\"form-control\" id=\"lName\" placeholder=\"Last Name\" name=\"lName\">\n                    </div>\n                </div>\n                <div class=\"form-row\">\n                    <div class=\"form-group col-md-4\">\n                        <label for=\"emailIdReg\">Email Id</label>\n                        <input type=\"email\" class=\"form-control\" id=\"emailIdReg\" placeholder=\"Email Id\" name=\"emailIdReg\">\n                    </div>\n                    <div class=\"form-group col-md-4\">\n                        <label for=\"mobile\">Mobile</label>\n                        <input type=\"number\" class=\"form-control\" id=\"mobile\" placeholder=\"Mobile\" name=\"mobile\">\n                    </div>\n                    <div class=\"form-group col-md-4\">\n                        <label for=\"gender\">Gender</label>\n                        <div class=\"form-check form-check-inline\">\n                            <input class=\"form-check-input\" (change)=\"radioCheck('Male')\" type=\"radio\" checked\n                                name=\"gender\" id=\"gender\" value=\"Male\">\n                            <label class=\"form-check-label\" for=\"male\">Male</label>\n                        </div>\n                        <div class=\"form-check form-check-inline\">\n                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" (change)=\"radioCheck('Female')\"\n                                id=\"gender\" value=\"Female\">\n                            <label class=\"form-check-label\" for=\"Female\">Female</label>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"line1\">Address</label>\n                    <input type=\"text\" class=\"form-control\" id=\"line1\" placeholder=\"Line 1\" name=\"line1\">\n                </div>\n                <div class=\"form-row\">\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"city\">City</label>\n                        <input type=\"text\" class=\"form-control\" id=\"city\" name=\"city\">\n                    </div>\n                    <div class=\"form-group col-md-4\">\n                        <label for=\"state\">State</label>\n                        <input type=\"text\" class=\"form-control\" id=\"state\" name=\"state\">\n                    </div>\n                    <div class=\"form-group col-md-2\">\n                        <label for=\"country\">Country</label>\n                        <input type=\"text\" class=\"form-control\" id=\"country\" name=\"country\">\n                    </div>\n                </div>\n                <div class=\"form-row\">\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"passwordReg\">Password</label>\n                        <input type=\"password\" class=\"form-control\" id=\"passwordReg\" placeholder=\"Password\"\n                            name=\"passwordReg\">\n                    </div>\n                    <div class=\"form-group col-md-6\">\n                        <label for=\"profilePic\">Select Image</label>\n                        <input type=\"file\" class=\"form-control\" id=\"profilePic\" name=\"profilePic\">\n                    </div>\n                </div>\n                <button type=\"button\" (click)=\"register()\" class=\"btn btn-primary\">Sign Up</button>\n            </form>\n\n        </div>\n\n    </div>\n</div>");
 
 /***/ }),
 
@@ -345,21 +358,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _frame_work_frame_work_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./frame-work/frame-work.component */ "./src/app/frame-work/frame-work.component.ts");
-/* harmony import */ var _user_register_user_register_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user-register/user-register.component */ "./src/app/user-register/user-register.component.ts");
-/* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./auth/auth.interceptor */ "./src/app/auth/auth.interceptor.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
-/* harmony import */ var _post_upload_post_upload_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./post-upload/post-upload.component */ "./src/app/post-upload/post-upload.component.ts");
-/* harmony import */ var _posts_list_posts_list_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./posts-list/posts-list.component */ "./src/app/posts-list/posts-list.component.ts");
-/* harmony import */ var _search_filter_pipe__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./search-filter.pipe */ "./src/app/search-filter.pipe.ts");
-/* harmony import */ var _search_list_search_list_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./search-list/search-list.component */ "./src/app/search-list/search-list.component.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _frame_work_frame_work_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./frame-work/frame-work.component */ "./src/app/frame-work/frame-work.component.ts");
+/* harmony import */ var _user_register_user_register_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user-register/user-register.component */ "./src/app/user-register/user-register.component.ts");
+/* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./auth/auth.interceptor */ "./src/app/auth/auth.interceptor.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _post_upload_post_upload_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./post-upload/post-upload.component */ "./src/app/post-upload/post-upload.component.ts");
+/* harmony import */ var _posts_list_posts_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./posts-list/posts-list.component */ "./src/app/posts-list/posts-list.component.ts");
+/* harmony import */ var _search_filter_pipe__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./search-filter.pipe */ "./src/app/search-filter.pipe.ts");
+/* harmony import */ var _search_list_search_list_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./search-list/search-list.component */ "./src/app/search-list/search-list.component.ts");
+/* harmony import */ var _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user-profile/user-profile.component */ "./src/app/user-profile/user-profile.component.ts");
+/* harmony import */ var _user_post_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./user-post.service */ "./src/app/user-post.service.ts");
 
 
 
 // import {FileSelectDirective} from 'ng2-file-upload';
+
+
+
 
 
 
@@ -378,44 +397,67 @@ let AppModule = class AppModule {
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
-            _frame_work_frame_work_component__WEBPACK_IMPORTED_MODULE_6__["FrameWorkComponent"],
-            _user_register_user_register_component__WEBPACK_IMPORTED_MODULE_7__["UserRegisterComponent"],
-            _home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"],
-            _post_upload_post_upload_component__WEBPACK_IMPORTED_MODULE_12__["PostUploadComponent"],
-            _posts_list_posts_list_component__WEBPACK_IMPORTED_MODULE_13__["PostsListComponent"],
-            _search_filter_pipe__WEBPACK_IMPORTED_MODULE_14__["SearchFilterPipe"],
-            _search_list_search_list_component__WEBPACK_IMPORTED_MODULE_15__["SearchListComponent"],
+            _frame_work_frame_work_component__WEBPACK_IMPORTED_MODULE_7__["FrameWorkComponent"],
+            _user_register_user_register_component__WEBPACK_IMPORTED_MODULE_8__["UserRegisterComponent"],
+            _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
+            _post_upload_post_upload_component__WEBPACK_IMPORTED_MODULE_13__["PostUploadComponent"],
+            _posts_list_posts_list_component__WEBPACK_IMPORTED_MODULE_14__["PostsListComponent"],
+            _search_filter_pipe__WEBPACK_IMPORTED_MODULE_15__["SearchFilterPipe"],
+            _search_list_search_list_component__WEBPACK_IMPORTED_MODULE_16__["SearchListComponent"],
+            _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_17__["UserProfileComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-            // HttpModule,
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
+            _angular_http__WEBPACK_IMPORTED_MODULE_5__["HttpModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot([
                 {
                     path: '',
-                    component: _user_register_user_register_component__WEBPACK_IMPORTED_MODULE_7__["UserRegisterComponent"]
+                    component: _user_register_user_register_component__WEBPACK_IMPORTED_MODULE_8__["UserRegisterComponent"]
                 },
                 {
                     path: 'signup',
-                    component: _user_register_user_register_component__WEBPACK_IMPORTED_MODULE_7__["UserRegisterComponent"]
+                    component: _user_register_user_register_component__WEBPACK_IMPORTED_MODULE_8__["UserRegisterComponent"]
                 },
+                // {
+                //   path: 'home',
+                //   component: HomeComponent, canActivate: [AuthGuard]
+                // },
+                // {
+                //   path: 'search/:searchTerm',
+                //   component: SearchListComponent, canActivate: [AuthGuard]
+                // },
+                // {
+                //   path: 'userProfile',
+                //   component: UserProfileComponent, canActivate: [AuthGuard]
+                // },
                 {
-                    path: 'home',
-                    component: _home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
-                },
-                {
-                    path: 'search/:searchTerm',
-                    component: _search_list_search_list_component__WEBPACK_IMPORTED_MODULE_15__["SearchListComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
-                },
+                    path: '',
+                    component: _frame_work_frame_work_component__WEBPACK_IMPORTED_MODULE_7__["FrameWorkComponent"],
+                    children: [
+                        {
+                            path: 'home',
+                            component: _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_9__["AuthGuard"]]
+                        },
+                        {
+                            path: 'search/:searchTerm',
+                            component: _search_list_search_list_component__WEBPACK_IMPORTED_MODULE_16__["SearchListComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_9__["AuthGuard"]]
+                        },
+                        {
+                            path: 'userProfile',
+                            component: _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_17__["UserProfileComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_9__["AuthGuard"]]
+                        },
+                    ]
+                }
             ])
         ],
         providers: [{
-                provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HTTP_INTERCEPTORS"],
-                useClass: _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_10__["AuthInterceptor"],
+                provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HTTP_INTERCEPTORS"],
+                useClass: _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_11__["AuthInterceptor"],
                 multi: true
-            }, _auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"], _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_10__["AuthInterceptor"], _user_service__WEBPACK_IMPORTED_MODULE_11__["UserService"]],
-        bootstrap: [_frame_work_frame_work_component__WEBPACK_IMPORTED_MODULE_6__["FrameWorkComponent"]]
+            }, _auth_auth_guard__WEBPACK_IMPORTED_MODULE_9__["AuthGuard"], _auth_auth_interceptor__WEBPACK_IMPORTED_MODULE_11__["AuthInterceptor"], _user_service__WEBPACK_IMPORTED_MODULE_12__["UserService"], _user_post_service__WEBPACK_IMPORTED_MODULE_18__["UserPostService"]],
+        bootstrap: [_frame_work_frame_work_component__WEBPACK_IMPORTED_MODULE_7__["FrameWorkComponent"]]
     })
 ], AppModule);
 
@@ -495,8 +537,10 @@ let AuthInterceptor = class AuthInterceptor {
         this.router = router;
     }
     intercept(req, next) {
-        if (req.headers.get('noauth'))
+        if (req.headers.get('NoAuth')) {
+            console.log(req);
             return next.handle(req.clone());
+        }
         else {
             const clonedreq = req.clone({
                 headers: req.headers.set("Authorization", "Bearer " + this.userService.getToken())
@@ -575,8 +619,32 @@ let FrameWorkComponent = class FrameWorkComponent {
     }
     ngOnInit() {
         // this.userService.deleteToken();
+        // this.search.item = "";
+        // if (this.user==null) {
+        //   let timer = Observable.timer(1000, 5000);
+        //   timer.subscribe(() => 
+        //   this.checkIsLoggedIn());
+        // }
         this.isLoggedIn = this.userService.isLogedin();
-        this.getUserNames();
+        if (this.isLoggedIn) {
+            this.getUserNames();
+        }
+        if (this.isLoggedIn) {
+            this.userService.getUserById().subscribe(data => {
+                this.postExecuteGetUserById(data);
+            });
+        }
+    }
+    checkIsLoggedIn() {
+        this.isLoggedIn = this.userService.isLogedin();
+        if (this.isLoggedIn) {
+            this.userService.getUserById().subscribe(data => {
+                this.postExecuteGetUserById(data);
+            });
+        }
+    }
+    postExecuteGetUserById(data) {
+        this.user = data.data;
     }
     keyPressSearch() {
         if (this.search.item == "") {
@@ -595,9 +663,6 @@ let FrameWorkComponent = class FrameWorkComponent {
         data.data.forEach(itm => {
             this.userNames.push(itm.fName + " " + itm.lName);
         });
-        this.userNames.push("damini patel");
-        this.userNames.push("jyoti patel");
-        this.userNames.push("mittal patel");
     }
     test(input) {
         console.log(input + " " + this.userService.isLogedin());
@@ -617,6 +682,10 @@ let FrameWorkComponent = class FrameWorkComponent {
         this.search.item = searchItem;
         this.isShowAutoComplete = false;
         this.router.navigate(['search/' + searchItem]);
+    }
+    logOut() {
+        this.userService.deleteToken();
+        this.router.navigate(['']);
     }
 };
 FrameWorkComponent.ctorParameters = () => [
@@ -673,7 +742,6 @@ let HomeComponent = class HomeComponent {
     constructor(frameWorkComponent, userService) {
         this.frameWorkComponent = frameWorkComponent;
         this.userService = userService;
-        debugger;
     }
     ngOnInit() {
         // this.frameWorkComponent.isLoggedIn = this.userService.isLogedin();
@@ -780,11 +848,15 @@ let PostUploadComponent = class PostUploadComponent {
             alert(data.msg);
         }
         else {
+            this.userPostServive.setRefreshNeed(true);
             alert("posted");
             this.captionInput.value = "";
             // debugger
             // this.router.navigate(['home']);
-            this.postListComponent.displayUserPosts();
+            // this.router.navigate(['home']);
+            // this.router.navigateByUrl('userProfile', { skipLocationChange: true });
+            // this.router.navigate(['home']);
+            // this.postListComponent.displayUserPosts();
         }
     }
     createPostWithMedia() {
@@ -812,6 +884,7 @@ let PostUploadComponent = class PostUploadComponent {
             alert(data.msg);
         }
         else {
+            this.userPostServive.setRefreshNeed(true);
             alert("posted");
             this.captionInputWithMedia.value = "";
             this.mediaInput.value = "";
@@ -832,8 +905,11 @@ PostUploadComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-post-upload',
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./post-upload.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/post-upload/post-upload.component.html")).default,
-        providers: [_user_post_service__WEBPACK_IMPORTED_MODULE_2__["UserPostService"], _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"], _posts_list_posts_list_component__WEBPACK_IMPORTED_MODULE_3__["PostsListComponent"]],
+        providers: [_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"], _posts_list_posts_list_component__WEBPACK_IMPORTED_MODULE_3__["PostsListComponent"]],
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./post-upload.component.css */ "./src/app/post-upload/post-upload.component.css")).default]
+    }),
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        providers: [_user_post_service__WEBPACK_IMPORTED_MODULE_2__["UserPostService"]]
     })
 ], PostUploadComponent);
 
@@ -868,6 +944,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _user_post_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user-post.service */ "./src/app/user-post.service.ts");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var rxjs_Rx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/Rx */ "../node_modules/rxjs-compat/_esm2015/Rx.js");
+
 
 
 
@@ -876,22 +954,99 @@ let PostsListComponent = class PostsListComponent {
     constructor(userPostService, userService) {
         this.userPostService = userPostService;
         this.userService = userService;
+        this.source = "";
+        this.postsList = [];
+        this.likeUnlikeData = {
+            userId: '',
+            postId: ''
+        };
     }
     ngOnInit() {
-        console.log(this.user + "from post list");
+        console.log(this.userId + "from post list");
+        let timer = rxjs_Rx__WEBPACK_IMPORTED_MODULE_4__["Observable"].timer(1000, 5000);
+        timer.subscribe(() => {
+            if (this.userPostService.getRefreshNeed()) {
+                this.displayUserPosts();
+                this.userPostService.setRefreshNeed(false);
+            }
+        });
+        // this.userPostService.refreshNeeded$.subscribe(()=>{
+        //   this.displayUserPosts();
+        // })
         this.displayUserPosts();
     }
     displayUserPosts() {
         this.postsListByUserId();
+        if (this.source != "userProfile") {
+            this.postsListByFollowingIds();
+        }
+        ;
     }
+    setClasses() {
+        this.postsList.forEach(post => {
+            if (post.likes.length <= 0) {
+                post.class = "far fa-heart";
+            }
+            post.likes.forEach(id => {
+                if (id == this.userService.getUserPayload().userId) {
+                    post.class = "fas fa-heart";
+                }
+                else {
+                    post.class = "far fa-heart";
+                }
+            });
+        });
+    }
+    likeUnlikeClicked(post) {
+        this.likeUnlikeData.userId = this.userService.getUserPayload().userId;
+        this.likeUnlikeData.postId = post._id;
+        this.userPostService.likeUnlike(this.likeUnlikeData).subscribe((data) => {
+            if (data.status == "success") {
+                // this.postsList.length=0;
+                // this.displayUserPosts();       
+                this.postsList.find(item => item._id == post._id).likes = data.data.likes;
+                this.setClasses();
+            }
+        });
+        // this.userPostService.likeUnlike(this.likeUnlikeData);
+    }
+    // postExecuteGetUserByIdForPostList(data:any)
+    // {
+    // }
     postsListByUserId() {
-        // this.userPostService.getPostsByUserId(this.user._id).subscribe(data => {
-        this.userPostService.getPostsByUserId(this.userService.getUserPayload().userId).subscribe(data => {
+        // this.userPostService.getPostsByUserId(this.userService.getUserPayload().userId).subscribe(data => {
+        this.userPostService.getPostsByUserId(this.userId).subscribe(data => {
             this.postExecutePostsListByUserId(data);
         });
     }
     postExecutePostsListByUserId(data) {
-        this.postsList = data.data;
+        // this.postsList = data.data;
+        data.data.forEach(userPost => {
+            this.userService.getUserByIdParam(userPost.userId).subscribe((data) => {
+                userPost.user = data.data;
+            });
+            this.postsList.push(userPost);
+            this.setClasses();
+        });
+    }
+    postsListByFollowingIds() {
+        // this.userPostService.getPostsByFollowingIds(this.userService.getUserPayload().userId).subscribe(data => {
+        this.userPostService.getPostsByFollowingIds(this.userId).subscribe(data => {
+            this.postExecutePostsListByFollowignIds(data);
+        });
+    }
+    postExecutePostsListByFollowignIds(data) {
+        data.data.forEach(userPost => {
+            this.userService.getUserByIdParam(userPost.userId).subscribe((data) => {
+                console.log(data);
+                userPost.user = data.data;
+            });
+            this.postsList.push(userPost);
+        });
+        this.postsList.sort((val1, val2) => {
+            return new Date(val2.datePosted).getTime() - new Date(val1.datePosted).getTime();
+        });
+        this.setClasses();
     }
 };
 PostsListComponent.ctorParameters = () => [
@@ -900,13 +1055,19 @@ PostsListComponent.ctorParameters = () => [
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
-], PostsListComponent.prototype, "user", void 0);
+], PostsListComponent.prototype, "userId", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], PostsListComponent.prototype, "source", void 0);
 PostsListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-posts-list',
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./posts-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/posts-list/posts-list.component.html")).default,
-        providers: [_user_post_service__WEBPACK_IMPORTED_MODULE_2__["UserPostService"], _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]],
+        providers: [_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]],
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./posts-list.component.css */ "./src/app/posts-list/posts-list.component.css")).default]
+    }),
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        providers: [_user_post_service__WEBPACK_IMPORTED_MODULE_2__["UserPostService"]]
     })
 ], PostsListComponent);
 
@@ -978,31 +1139,100 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user */ "./src/app/user.ts");
+
+
 
 
 
 let SearchListComponent = class SearchListComponent {
-    constructor(route, router) {
+    constructor(route, router, userService) {
         this.route = route;
         this.router = router;
+        this.userService = userService;
         this.searchTerm = "";
+        this.searchList = [_user__WEBPACK_IMPORTED_MODULE_4__["User"]];
+        this.sepratedSearchTerm = {
+            fName: '',
+            lName: ''
+        };
+        this.followBtnData = {
+            loggedInUserId: '',
+            clickedUserId: ''
+        };
     }
     ngOnInit() {
+        this.loggedInUserId = this.userService.getUserPayload().userId;
         this.getSearchList();
     }
     getSearchList() {
         this.searchTerm = this.route.snapshot.paramMap.get('searchTerm');
+        this.sepratedSearchTerm.fName = this.searchTerm.split(" ")[0];
+        this.sepratedSearchTerm.lName = this.searchTerm.split(" ")[1];
+        this.userService.getSearchList(this.sepratedSearchTerm).subscribe(data => {
+            this.postExecuteGetSearchList(data);
+        });
+    }
+    postExecuteGetSearchList(data) {
+        if (data.status == "success") {
+            data.data.forEach((itm) => {
+                itm.btnType = "follow";
+                itm.followers.forEach(follower => {
+                    if (this.loggedInUserId == follower) {
+                        itm.btnType = "none";
+                    }
+                });
+                itm.following.forEach(following => {
+                    if (this.loggedInUserId == following && itm.btnType == "follow") {
+                        itm.btnType = "follow back";
+                    }
+                });
+            });
+            this.searchList = data.data;
+        }
+        else if (data.status == "No User") {
+        }
+        else {
+            alert(data.msg);
+        }
+    }
+    userClicked(user) {
+        // this.router.navigate(['/userProfile/' + user]);
+        console.log(user.fName);
+        this.userService.setUser(user);
+        this.router.navigate(['userProfile']);
+    }
+    followBtnClick(clickedUserId) {
+        debugger;
+        this.followBtnData.loggedInUserId = this.loggedInUserId;
+        this.followBtnData.clickedUserId = clickedUserId;
+        this.userService.followBtnClick(this.followBtnData).subscribe(data => {
+            this.postExecuteFollowBtnClick(data);
+        });
+    }
+    postExecuteFollowBtnClick(data) {
+        if (data.status == "success") {
+            this.router.navigate(['home']);
+        }
+        else {
+            alert(data.msg);
+        }
     }
 };
 SearchListComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"] }
 ];
 SearchListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-search-list',
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./search-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/search-list/search-list.component.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./search-list.component.css */ "./src/app/search-list/search-list.component.css")).default]
+    }),
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        providers: [_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]]
     })
 ], SearchListComponent);
 
@@ -1023,16 +1253,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+
 
 
 
 let UserPostService = class UserPostService {
     constructor(http) {
         this.http = http;
+        this._refreshNeeded$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.refreshNeed = false;
         this.URLCREATEPOST = "http://localhost:3000/api/postwithoutmedia";
         this.URLCREATEPOSTWITHMEDIA = "http://localhost:3000/api/postwithmedia";
         this.URL_GET_POSTS_BY_USERID = "http://localhost:3000/api/getPostsByUserId";
+        this.URL_GET_POSTS_BY_FOLLOWINGIDS = "http://localhost:3000/api/getPostsByFollowingIds";
+        this.URL_LIKE_UNLIKE = "http://localhost:3000/api/likeUnlike";
         this.noAuthHeader = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'NoAuth': 'True' }) };
+    }
+    setRefreshNeed(isNeed) {
+        this.refreshNeed = isNeed;
+    }
+    getRefreshNeed() {
+        return this.refreshNeed;
+    }
+    get refreshNeeded$() {
+        return this._refreshNeeded$;
     }
     createpost(postData) {
         return this.http.post(this.URLCREATEPOST, postData);
@@ -1041,7 +1286,19 @@ let UserPostService = class UserPostService {
         return this.http.post(this.URLCREATEPOSTWITHMEDIA, formdata);
     }
     getPostsByUserId(userId) {
+        // return this.http.get(this.URL_GET_POSTS_BY_USERID + "/" + userId).pipe(tap(() => {
+        //   this.refreshNeeded$.next();
+        // }))
         return this.http.get(this.URL_GET_POSTS_BY_USERID + "/" + userId);
+    }
+    getPostsByFollowingIds(userId) {
+        // return this.http.get(this.URL_GET_POSTS_BY_USERID + "/" + userId).pipe(tap(() => {
+        //   this.refreshNeeded$.next();
+        // }))
+        return this.http.get(this.URL_GET_POSTS_BY_FOLLOWINGIDS + "/" + userId);
+    }
+    likeUnlike(data) {
+        return this.http.post(this.URL_LIKE_UNLIKE, data);
     }
 };
 UserPostService.ctorParameters = () => [
@@ -1050,6 +1307,96 @@ UserPostService.ctorParameters = () => [
 UserPostService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
 ], UserPostService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/user-profile/user-profile.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/user-profile/user-profile.component.css ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItcHJvZmlsZS91c2VyLXByb2ZpbGUuY29tcG9uZW50LmNzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/user-profile/user-profile.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/user-profile/user-profile.component.ts ***!
+  \********************************************************/
+/*! exports provided: UserProfileComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserProfileComponent", function() { return UserProfileComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _user_post_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user-post.service */ "./src/app/user-post.service.ts");
+
+
+
+
+
+let UserProfileComponent = class UserProfileComponent {
+    constructor(userService, userPostService, route, router) {
+        this.userService = userService;
+        this.userPostService = userPostService;
+        this.route = route;
+        this.router = router;
+        this.followBtnData = {
+            loggedInUserId: '',
+            clickedUserId: ''
+        };
+    }
+    ngOnInit() {
+        debugger;
+        this.loggedInUserId = this.userService.getUserPayload().userId;
+        // this.user=this.route.snapshot.paramMap.get('user');
+        this.user = this.userService.getUser();
+        console.log(this.user + "selected user");
+    }
+    followBtnClick(clickedUserId) {
+        this.followBtnData.loggedInUserId = this.loggedInUserId;
+        this.followBtnData.clickedUserId = clickedUserId;
+        this.userService.followBtnClick(this.followBtnData).subscribe(data => {
+            this.postExecuteFollowBtnClick(data);
+        });
+    }
+    postExecuteFollowBtnClick(data) {
+        if (data.status == "success") {
+            this.router.navigate(['home']);
+        }
+        else {
+            alert(data.msg);
+        }
+    }
+};
+UserProfileComponent.ctorParameters = () => [
+    { type: _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"] },
+    { type: _user_post_service__WEBPACK_IMPORTED_MODULE_4__["UserPostService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
+UserProfileComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-user-profile',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./user-profile.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-profile/user-profile.component.html")).default,
+        // providers:[UserPostService,UserService]
+        providers: [_user_post_service__WEBPACK_IMPORTED_MODULE_4__["UserPostService"]],
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./user-profile.component.css */ "./src/app/user-profile/user-profile.component.css")).default]
+    }),
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        providers: [_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]]
+    })
+], UserProfileComponent);
 
 
 
@@ -1105,74 +1452,42 @@ let UserRegisterComponent = class UserRegisterComponent {
             password: ''
         };
         this.emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        debugger;
     }
     ngOnInit() {
     }
-    // isEmailExist(email: string): string {
-    //   this.userService.isEmailExist(email)
-    //     .subscribe(data => {
-    //       console.log(data, "in isEmailExistSubscribe")
-    //       console.log(this.isEmailExistPostExecute(data), "from postEmailEist");
-    //       if (this.isEmailExistPostExecute(data) == "no") {
-    //         this.isExist = "no";
-    //       }
-    //       else {
-    //         this.isExist = "yes";
-    //       }
-    //     });
-    //   console.log(this.isExist)
-    //   return this.isExist;
-    // }
-    // isEmailExistPostExecute(res: any): string {
-    //   console.log(res, " in isEmailExistPostExecute");
-    //   if (res.status == "no") {
-    //     // alert(res.msg);        
-    //     return "no";
-    //   }
-    //   else {
-    //     let inputEmailId: HTMLInputElement = this.elementRef.nativeElement.querySelector('#emailId');
-    //     inputEmailId.value = "";
-    //     return "yes";
-    //   }
-    // }
     radioCheck(gender) {
         this.slectedGender = gender;
         //  alert(this.slectedGender);
     }
     register() {
         //locate the file element meant for the file upload.
-        let inputEl = this.elementRef.nativeElement.querySelector('#profilePic');
-        let inputFname = this.elementRef.nativeElement.querySelector('#fName');
-        let inputLname = this.elementRef.nativeElement.querySelector('#lName');
-        let inputEmailId = this.elementRef.nativeElement.querySelector('#emailId');
-        let inputMobile = this.elementRef.nativeElement.querySelector('#mobile');
-        let inputLine1 = this.elementRef.nativeElement.querySelector('#line1');
-        let inputCity = this.elementRef.nativeElement.querySelector('#city');
-        let inputState = this.elementRef.nativeElement.querySelector('#state');
-        let inputCountry = this.elementRef.nativeElement.querySelector('#country');
-        let inputPassword = this.elementRef.nativeElement.querySelector('#password');
+        this.inputEl = this.elementRef.nativeElement.querySelector('#profilePic');
+        this.inputFname = this.elementRef.nativeElement.querySelector('#fName');
+        this.inputLname = this.elementRef.nativeElement.querySelector('#lName');
+        this.inputEmailId = this.elementRef.nativeElement.querySelector('#emailIdReg');
+        this.inputMobile = this.elementRef.nativeElement.querySelector('#mobile');
+        this.inputLine1 = this.elementRef.nativeElement.querySelector('#line1');
+        this.inputCity = this.elementRef.nativeElement.querySelector('#city');
+        this.inputState = this.elementRef.nativeElement.querySelector('#state');
+        this.inputCountry = this.elementRef.nativeElement.querySelector('#country');
+        this.inputPassword = this.elementRef.nativeElement.querySelector('#passwordReg');
         //get the total amount of files attached to the file input.
-        let fileCount = inputEl.files.length;
+        let fileCount = this.inputEl.files.length;
+        debugger;
         let formData = new FormData();
         if (fileCount > 0) { // a file was selected      
-            formData.append('userImage', inputEl.files.item(0));
-            formData.append('fName', inputFname.value);
-            formData.append('lName', inputLname.value);
-            formData.append('emailId', inputEmailId.value);
-            formData.append('mobile', inputMobile.value);
+            formData.append('userImage', this.inputEl.files.item(0));
+            formData.append('fName', this.inputFname.value);
+            formData.append('lName', this.inputLname.value);
+            formData.append('emailId', this.inputEmailId.value);
+            formData.append('mobile', this.inputMobile.value);
             formData.append('gender', this.slectedGender);
-            formData.append('line1', inputLine1.value);
-            formData.append('city', inputCity.value);
-            formData.append('state', inputState.value);
-            formData.append('country', inputCountry.value);
-            formData.append('password', inputPassword.value);
-            // var response = this.isEmailExist(inputEmailId.value);
-            // console.log(response);
-            // if (response == "no") {
+            formData.append('line1', this.inputLine1.value);
+            formData.append('city', this.inputCity.value);
+            formData.append('state', this.inputState.value);
+            formData.append('country', this.inputCountry.value);
+            formData.append('password', this.inputPassword.value);
             this.userService.createUser(formData).subscribe(data => {
-                // console.log(data);
-                //this.res=data;
                 this.postExecute(data);
             });
             // console.log(this.res,"success")
@@ -1188,10 +1503,23 @@ let UserRegisterComponent = class UserRegisterComponent {
     postExecute(res) {
         if (res.status == "success") {
             alert(res.msg);
+            this.clear();
         }
         else {
             alert(res.msg);
         }
+    }
+    clear() {
+        this.inputEl.value = "";
+        this.inputFname.value = "";
+        this.inputLname.value = "";
+        this.inputEmailId.value = "";
+        this.inputMobile.value = "";
+        this.inputLine1.value = "";
+        this.inputCity.value = "";
+        this.inputState.value = "";
+        this.inputCountry.value = "";
+        this.inputPassword.value = "";
     }
     login(model) {
         this.userService.login(model).subscribe(data => {
@@ -1253,18 +1581,17 @@ let UserService = class UserService {
         this.URLEMAILEXIST = 'http://localhost:3000/api/isEmailExist/';
         this.LOGIN = 'http://localhost:3000/api/login';
         this.URL_GETUSERNAMES = 'http://localhost:3000/api/getUserNames';
+        this.URL_GET_SEARCH_LIST = 'http://localhost:3000/api/getSearchList';
+        this.URL_FOLLOW_BTN_CLICK = 'http://localhost:3000/api/followBtnClicked';
     }
     createUser(formdata) {
-        // this.http.post(this.URLUSER, formdata)
-        //   .subscribe(data => { // use HttpClient for this functionality
-        //     res = data;
-        //     console.log(res.msg);
-        //   });
         return this.http.post(this.URLUSER, formdata, this.noAuthHeader);
     }
     getUserById() {
-        console.log(this.getUserPayload() + "Payload");
         return this.http.get(this.URLUSER + "/" + this.getUserPayload().userId);
+    }
+    getUserByIdParam(userId) {
+        return this.http.get(this.URLUSER + "/" + userId);
     }
     // isEmailExist(email: string) {    
     //   return this.http.get(this.URLEMAILEXIST + email);
@@ -1302,6 +1629,18 @@ let UserService = class UserService {
     getUSerNames() {
         return this.http.get(this.URL_GETUSERNAMES);
     }
+    getSearchList(data) {
+        return this.http.post(this.URL_GET_SEARCH_LIST, data);
+    }
+    followBtnClick(data) {
+        return this.http.post(this.URL_FOLLOW_BTN_CLICK, data);
+    }
+    setUser(selectedUser) {
+        this.user = selectedUser;
+    }
+    getUser() {
+        return this.user;
+    }
 };
 UserService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
@@ -1310,6 +1649,28 @@ UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
 ], UserService);
 
+
+
+/***/ }),
+
+/***/ "./src/app/user.ts":
+/*!*************************!*\
+  !*** ./src/app/user.ts ***!
+  \*************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class User {
+    constructor() {
+        // for angular side
+        this.btnType = "follow";
+    }
+}
 
 
 /***/ }),

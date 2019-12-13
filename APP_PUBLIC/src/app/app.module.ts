@@ -19,6 +19,9 @@ import { PostUploadComponent } from './post-upload/post-upload.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { SearchListComponent } from './search-list/search-list.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import {UserPostService} from './user-post.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,12 +32,13 @@ import { SearchListComponent } from './search-list/search-list.component';
     PostsListComponent,
     SearchFilterPipe,
     SearchListComponent,
+    UserProfileComponent,
     //FileSelectDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    // HttpModule,
+    HttpModule,
     HttpClientModule,
     RouterModule.forRoot(
       [
@@ -46,21 +50,45 @@ import { SearchListComponent } from './search-list/search-list.component';
           path: 'signup',
           component: UserRegisterComponent
         },
+        // {
+        //   path: 'home',
+        //   component: HomeComponent, canActivate: [AuthGuard]
+        // },
+        // {
+        //   path: 'search/:searchTerm',
+        //   component: SearchListComponent, canActivate: [AuthGuard]
+        // },
+        // {
+        //   path: 'userProfile',
+        //   component: UserProfileComponent, canActivate: [AuthGuard]
+        // },
         {
-          path: 'home',
-          component: HomeComponent, canActivate: [AuthGuard]
-        },
-        {
-          path: 'search/:searchTerm',
-          component: SearchListComponent, canActivate: [AuthGuard]
-        },
+          path:'',
+          component:FrameWorkComponent,
+          children:
+          [
+            {
+              path: 'home',
+              component: HomeComponent, canActivate: [AuthGuard]
+            },
+            {
+              path: 'search/:searchTerm',
+              component: SearchListComponent, canActivate: [AuthGuard]
+            },
+            {
+              path: 'userProfile',
+              component: UserProfileComponent, canActivate: [AuthGuard]
+            },
+          ]
+
+        }
       ])
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }, AuthGuard, AuthInterceptor,UserService],
+  }, AuthGuard, AuthInterceptor,UserService,UserPostService],
   bootstrap: [FrameWorkComponent]
 })
 export class AppModule { }

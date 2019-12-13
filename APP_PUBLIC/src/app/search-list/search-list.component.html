@@ -1,1 +1,35 @@
-<div class="martop">{{searchTerm}}</div>
+<div class="martop row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card gedf-card" *ngFor="let user of searchList">
+            <div class="card-header" (click)="userClicked(user)">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="mr-2">
+                            <img class="rounded-circle" width="45" src="/userImages/{{user.profilePic}}" alt="">
+                        </div>
+                        <div class="ml-2">
+                            <div class="h5 m-0">{{user.fName}} {{user.lName}}</div>
+                            <!-- <div class="h7 text-muted">Miracles Lee Cross</div> -->
+                            <p><i class="fa fa-home"></i> Lives in {{user.address.city}},{{user.address.state}}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="dropdown">
+                            <div class="followingClassForSearch"
+                                *ngIf="user._id!=loggedInUserId&&user.btnType=='none'">Following</div>                            
+                            <button (click)="followBtnClick(user._id)" *ngIf="user._id!=loggedInUserId&&user.btnType!='none'" class="btn btn-primary"
+                                type="button">
+                                <span *ngIf="user.btnType=='follow back'">Follow back</span>
+                                <span *ngIf="user.btnType=='follow'">Follow</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-4"></div>
+
+    </div>
+</div>

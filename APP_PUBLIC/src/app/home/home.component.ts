@@ -13,7 +13,7 @@ import { from } from 'rxjs';
 export class HomeComponent implements OnInit {
 
   user: User;
-  constructor(private frameWorkComponent: FrameWorkComponent, private userService: UserService) { debugger }
+  constructor(private frameWorkComponent: FrameWorkComponent, private userService: UserService) {  }
 
   ngOnInit() {
     // this.frameWorkComponent.isLoggedIn = this.userService.isLogedin();

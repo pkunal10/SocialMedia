@@ -14,8 +14,8 @@
             </div>
         </div>
         <div class="col-8">
-            <app-post-upload [user]=user></app-post-upload>
-            <app-posts-list [user]=user></app-posts-list>
+            <app-post-upload [user]="user"></app-post-upload>
+            <app-posts-list [userId]="user._id"></app-posts-list>
         </div>
     </div>
 </div>

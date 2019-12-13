@@ -8,6 +8,7 @@ import { from } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-frame-work',
@@ -18,6 +19,7 @@ import { UserService } from '../user.service';
 export class FrameWorkComponent implements OnInit {
 
   userNames = [];
+  user: any;
   isShowAutoComplete: boolean = false;
   search = {
     item: ''
@@ -27,12 +29,39 @@ export class FrameWorkComponent implements OnInit {
   isLoggedIn: boolean;
   ngOnInit() {
     // this.userService.deleteToken();
+    // this.search.item = "";
+    // if (this.user==null) {
+    //   let timer = Observable.timer(1000, 5000);
+    //   timer.subscribe(() => 
+    //   this.checkIsLoggedIn());
+
+    // }
+
     this.isLoggedIn = this.userService.isLogedin();
 
-    this.getUserNames();
+    if (this.isLoggedIn) {
+      this.getUserNames();
+    }
+    if (this.isLoggedIn) {
+      this.userService.getUserById().subscribe(data => {
+        this.postExecuteGetUserById(data);
+      })
+    }
 
   }
+  checkIsLoggedIn() {
+    this.isLoggedIn = this.userService.isLogedin();
 
+    if (this.isLoggedIn) {
+      this.userService.getUserById().subscribe(data => {
+        this.postExecuteGetUserById(data);
+      })
+    }
+  }
+
+  postExecuteGetUserById(data: any) {
+    this.user = data.data;
+  }
   keyPressSearch() {
     if (this.search.item == "") {
       this.isShowAutoComplete = false;
@@ -51,9 +80,6 @@ export class FrameWorkComponent implements OnInit {
     data.data.forEach(itm => {
       this.userNames.push(itm.fName + " " + itm.lName);
     });
-    this.userNames.push("damini patel");
-    this.userNames.push("jyoti patel");
-    this.userNames.push("mittal patel");
   }
   test(input: string) {
     console.log(input + " " + this.userService.isLogedin());
@@ -74,9 +100,14 @@ export class FrameWorkComponent implements OnInit {
 
 
   searchDropdownClick(searchItem: string) {
-    this.search.item=searchItem;
-    this.isShowAutoComplete=false;
+    this.search.item = searchItem;
+    this.isShowAutoComplete = false;
     this.router.navigate(['search/' + searchItem]);
+  }
+
+  logOut(){
+    this.userService.deleteToken();
+    this.router.navigate(['']);
   }
 
 }

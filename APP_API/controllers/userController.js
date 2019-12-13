@@ -129,13 +129,13 @@ module.exports.createUser = (req, res) => {
 module.exports.login = (req, res, next) => {
     user.findOne({ emailId: req.body.emailId, password: req.body.password })
         .exec((err, userData) => {
-            console.log(userData,req.body.emailId,req.body.password);
+
             if (err) {
                 return res.json({
                     'status': 'error',
                     'msg': err.message
                 });
-            }            
+            }
             else if (!userData) {
                 return res.json({
                     'status': 'NoUser',
@@ -178,9 +178,61 @@ module.exports.getUserNames = (req, res) => {
                 })
             }
         })
-    // user.aggregate(
-    //     [
-    //        { $project: { "UserName": { $concat: [ "$fName", "$lName" ] } } }
-    //     ]
-    //  );
+}
+module.exports.getSearchList = (req, res) => {
+    console.log(req.body);
+    user.find({ fName: req.body.fName, lName: req.body.lName })
+        .exec((err, userData) => {
+            if (err) {
+                return res.json({
+                    'status': 'error',
+                    'msg': err.message
+                })
+            }
+            else if (!userData) {
+                return res.json({
+                    'status': 'No User',
+                    'msg': 'No result found'
+                })
+            }
+            else {
+                return res.json({
+                    'status': 'success',
+                    data: userData
+                })
+            }
+        })
+}
+
+module.exports.followBtnClick = (req, res) => {
+    user.findByIdAndUpdate(req.body.loggedInUserId,
+        { $push: { following: req.body.clickedUserId } },
+        { safe: true, upsert: true }, (err, data) => {
+            if (err) {
+                return res.json({
+                    'status': 'error',
+                    'msg': err.message
+                })
+            }
+            else {
+                user.findByIdAndUpdate(req.body.clickedUserId,
+                    { $push: { followers: req.body.loggedInUserId } },
+                    { safe: true, upsert: true }, (err, data) => {
+                        if (err) {
+                            return res.json({
+                                'status': 'error',
+                                'msg': err.message
+                            })
+                        }
+                        else {
+                            return res.json({
+                                'status': 'success',
+                                'msg': 'followed'
+                            })
+                        }
+                    }
+                )
+            }
+        }
+    )
 }

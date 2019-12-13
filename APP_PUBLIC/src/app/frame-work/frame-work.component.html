@@ -8,16 +8,20 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="far fa-user"></i></a>
+        <a class="nav-link" routerLink="/userProfile" *ngIf="userService.isLogedin()"><i class="far fa-user"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="signup"><i class="fas fa-user-plus"></i></a>
+        <a class="nav-link" routerLink="/signup" *ngIf="!userService.isLogedin()"><i class="fas fa-user-plus"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logOut()" title="Log out" *ngIf="userService.isLogedin()"><i class="fa fa-sign-out"></i></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" *ngIf="isLoggedIn" class="searchBox">
+    <div><img class="rounded-circle" width="45" src="/userImages/{{user.profilePic}}" alt="">  {{user.fName}} </div>&nbsp;&nbsp;&nbsp;&nbsp;
+    <form class="form-inline my-2 my-lg-0" *ngIf="userService.isLogedin()" class="searchBox">      
       <input class="form-control mr-sm-5" [(ngModel)]="search.item" (keyup)="keyPressSearch()" [ngModelOptions]="{standalone:true}" id='search'
         type="search" placeholder="Search" aria-label="Search">
       <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->

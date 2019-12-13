@@ -26,6 +26,15 @@ router.route('/getPostsByUserId/:userId')
 .get(jwtVerify.jwtVarification,ctrlPost.getPostsByUserId);
 
 router.route('/getUserNames')
-.get(ctrlUser.getUserNames);
+.get(jwtVerify.jwtVarification,ctrlUser.getUserNames);
+router.route('/getSearchList')
+.post(jwtVerify.jwtVarification,ctrlUser.getSearchList);
+router.route('/followBtnClicked')
+.post(jwtVerify.jwtVarification,ctrlUser.followBtnClick);
+router.route('/getPostsByFollowingIds/:userId')
+.get(ctrlPost.getPostByFollowingIds);
+
+router.route('/likeUnlike')
+.post(ctrlPost.likeUnlike);
 
 module.exports=router;

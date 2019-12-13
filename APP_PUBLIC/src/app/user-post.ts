@@ -1,3 +1,4 @@
+import {User} from './user';
 export class UserPost {
     _id?: string;
     userId: string;
@@ -6,5 +7,7 @@ export class UserPost {
     media?: string;
     mediaType?: string;
     likes?: [string];
+    user:User;
+    class:String;
 
 }
